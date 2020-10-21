@@ -8,7 +8,17 @@ class Boss < ActiveRecord::Base
         #binding.pry
     end
 
+    def get_first_plan
+        self.plans.first
+    end
+
+    def plan_count
+        self.plans.count
+    end
 
 
+
+    
+    
 
 end
