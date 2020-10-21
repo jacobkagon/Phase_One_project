@@ -14,8 +14,12 @@ class Henchman < ActiveRecord::Base
     
 
     def self.all_henchmen
-        henchmen.all.name
+       puts "1. #{henchmen.first.name}, {henchmen.first.specialty}"
+       puts "2. #{henchmen.second.name}, {henchmen.second.specialty}"
+       puts "3. #{henchmen.third.name}, {henchmen.third.specialty}"
     end
+
+    def self
 
 
 
