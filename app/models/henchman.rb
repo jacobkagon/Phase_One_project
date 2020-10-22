@@ -19,7 +19,6 @@ class Henchman < ActiveRecord::Base
        puts "3. #{henchmen.third.name}, {henchmen.third.specialty}"
     end
 
-    def self
 
 
 

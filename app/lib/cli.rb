@@ -40,30 +40,43 @@ def villain_name
     user_input = gets.chomp
     if Boss.find_by(name: user_input)
         user = Boss.find_by(name: user_input)
-        puts "Welcome #{user.name}"
+        puts "Hello, #{user.name}"
+    end
+    if user == "Dr.Evil"
+        dr_evils_plans
+    elsif user == "Darth Vader"
+        darth_vaders_plans
     end
 end
 
+def dr_evils_plans
+    
+end
 
 def choose_plan
+    #allows the user to choose from a list of plans
     puts "Please choose an evil scheme to execute:"
     puts ""
     Plan.list_all_plans
+
 end
 
 def get_choose_plan
     choose_plan
-    chosen_plan = gets.chomp
-    puts "You have chosen #{chosen_plan}"
+    input = gets.chomp
+    if Plan.find_by(job: input)
+        new_job = Plan.find_by(job: input)
+    end
+    puts "You have chosen option #{chosen_plan}"
 end
 
 def choose_henchman
     puts "Would you like to choose a henchman?"
     puts "yes or no?"
     choose_henchman = gets.chomp
-    if choose_henchmen = 'yes'
+    if choose_henchmen == 'yes'
         henchmen
-    elsif choose_henchmen = 'no'
+    elsif choose_henchmen == 'no'
         #henchman who comes with job
     end
 end
