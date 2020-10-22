@@ -12,15 +12,15 @@ class Plan  < ActiveRecord::Base
         end
     end
 
-    def self.dr_evil_plan
-        if Plan.boss == dr_evil
-            dr_evil.plans.job
-        end
+    def self.boss_plans(boss)
+        self.find_by(boss_id: boss).job
     end
 
+    
+
     def self.darth_vader_plans
-        if Plan.biss == darth_vader
-            darth_vader.plans.jpb
+        if Plan.boss == darth_vader
+            darth_vader.plans.job
         end
     end
 
@@ -31,6 +31,16 @@ class Plan  < ActiveRecord::Base
        puts "1. #{Plan.first.job}"
        puts "2. #{Plan.second.job}"
        puts "3. #{Plan.third.job}"
+    end
+
+    def self.includes_boss(name)
+        #returns the bosses' plans
+        Boss.all.select do |boss|
+            boss.name == name
+        end.map do |boss|
+            boss.plans
+        end
+        
     end
 
 end 

@@ -1,29 +1,23 @@
 require_relative "../../config/environment.rb"
 
-#Name of Game #Evil_Plan_Generator
-
-def render_ascii_art
-    File.readlines("filename.txt") do |line|
-      puts line
-    end
-  end
+#we want to welcome the user to the evil plan generator
+#we want to give them options to search for a villain
+#we want to show a list of all villains
+#once they've selected a villain, they have the option to view that villain's plans
+#They can then see the henchmen associated with those plans
+#they can have the option to create a new henchmen?
 
 def begin_generator
-    puts "Welcome to the Evil Plan Generator".purple
-    puts "Press 1 to search for a villain"
-    puts "Press q to quit"
-end
-
-def choose_villain
-    puts "Please choose your villain"
-    Boss.list_boss_names
+    puts "Welcome to the Evil Plan Generator".red
+    puts "Press 1 to search for a villain".blue
+    puts "Press q to quit".green
 end
 
 def get_user_data
     begin_generator
    user_data = gets.chomp
    if user_data == '1' 
-    villain_name
+    choose_villain
    elsif user_data == 'q'
      puts "See you later.."
      exit
@@ -35,23 +29,42 @@ def get_user_data
 end
 
 
-def villain_name
-    choose_villain
+
+def choose_villain
+    puts "Please enter the name of your villain:".blue
+    puts "Or press 'b' to go back.".yellow
+    Boss.list_boss_names
     user_input = gets.chomp
-    if Boss.find_by(name: user_input)
-        user = Boss.find_by(name: user_input)
-        puts "Hello, #{user.name}"
-    end
-    if user == "Dr.Evil"
-        dr_evils_plans
-    elsif user == "Darth Vader"
-        darth_vaders_plans
+    puts "Welcome #{user_input}"
+    puts ""
+    choose_plans
+end
+
+def choose_plans
+    #shows the corresponding plans for that boss
+    puts "Please enter your new evil name"
+    user_data = gets.chomp
+    #boss_plans = Boss.boss_object(user_data)
+    puts "Thank you. Now choose your next evil scheme"
+    Plan.boss_plans(boss)
+end
+
+def boss_name
+    puts "enter name"
+    Boss.list_boss_names
+    $name = gets.chomp
+    if Boss.includes_boss(name)
+        list_boss_plans
     end
 end
 
-def dr_evils_plans
-    
+def list_boss_plans
+   boss = $name
+#    boss = Boss.boss_object(boss)
+#     Plan.boss_plans(boss)
+#     binding.pry
 end
+
 
 def choose_plan
     #allows the user to choose from a list of plans
@@ -62,10 +75,11 @@ def choose_plan
 end
 
 def get_choose_plan
+    #brings up the list of plans
     choose_plan
     input = gets.chomp
-    if Plan.find_by(job: input)
-        new_job = Plan.find_by(job: input)
+    if Plan.find_by(boss: dr_evil)
+        new_job = Plan.find_by(boss: dr_evil)
     end
     puts "You have chosen option #{chosen_plan}"
 end
@@ -90,14 +104,8 @@ end
 ################################################
 
 def run
-    #render_ascii_art
-    
-    #begin_generator
-    get_user_data
-    get_choose_plan
-    choose_henchmen
-    #choose_villain
-    #choose_plan
+get_user_data
+
 end
 
 run
