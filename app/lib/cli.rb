@@ -9,7 +9,7 @@ def render_ascii_art
   end
 
 def begin_generator
-    puts "Welcome to the Evil Plan Generator"
+    puts "Welcome to the Evil Plan Generator".purple
     puts "Press 1 to search for a villain"
     puts "Press q to quit"
 end
