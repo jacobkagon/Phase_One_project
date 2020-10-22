@@ -4,7 +4,7 @@ require_relative "../../config/environment.rb"
 #we want to give them options to search for a villain
 #we want to show a list of all villains
 #once they've selected a villain, they have the option to view that villain's plans
-#They can then see the henchmen associated with those plans
+#They can then see the henchmen associategirt pd with those plans
 #they can have the option to create a new henchmen?
 
 def begin_generator
