@@ -1,4 +1,6 @@
 require_relative "../../config/environment.rb"
+prompt = TTY::Prompt.new
+require 'pry'
 
 #we want to welcome the user to the evil plan generator
 #we want to give them options to search for a villain
@@ -24,7 +26,7 @@ def get_user_data
    else  
     puts "Sorry, please enter a valid command."
     begin_generator
-    binding.pry
+    #binding.pry
    end
 end
 
@@ -41,16 +43,21 @@ def choose_villain
 end
 
 def choose_plans
-    #shows the corresponding plans for that boss
-    boss_plans = Boss.boss_object($user_input)
     puts "Thank you. Now choose your next evil scheme:"
+    #boss = Boss.find_by(:name)
+    boss_plans = Boss.boss_object($user_input)
     puts ""
     puts boss_plans.plans.pluck(:job)
+    #shows the corresponding plans for that boss
+   
+    #prompt.select("Thank you. Now choose your next evil scheme:", choices)
+   
+   
+    
 
-    
-    
-    Plan.boss_plans(boss_plans)
+  
 end
+
 
 def boss_name
     puts "enter name"
