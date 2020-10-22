@@ -34,19 +34,18 @@ def choose_villain
     puts "Please enter the name of your villain:".blue
     puts "Or press 'b' to go back.".yellow
     Boss.list_boss_names
-    user_input = gets.chomp
-    puts "Welcome #{user_input}"
+    $user_input = gets.chomp
+    puts "Welcome #{$user_input}"
     puts ""
     choose_plans
 end
 
 def choose_plans
     #shows the corresponding plans for that boss
-    puts "Please enter your new evil name"
-    user_data = gets.chomp
-    #boss_plans = Boss.boss_object(user_data)
-    puts "Thank you. Now choose your next evil scheme"
-    Plan.boss_plans(boss)
+    boss_plans = Boss.boss_object($user_input)
+    puts "Thank you. Now choose your next evil scheme:"
+    puts ""
+    puts " * #{Plan.boss_plans(boss_plans)}"
 end
 
 def boss_name

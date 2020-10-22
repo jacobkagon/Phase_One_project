@@ -13,7 +13,7 @@ class Plan  < ActiveRecord::Base
     end
 
     def self.boss_plans(boss)
-        self.find_by(boss_id: boss).job
+      self.find_by(boss_id: boss).job
     end
 
     
