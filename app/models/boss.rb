@@ -20,14 +20,14 @@ class Boss < ActiveRecord::Base
     #    puts "#{Boss.fourth.title}"
     end
 
-    def self.includes_boss(name)
-        #returns the bosses' plans
-        self.all.select do |boss|
-            boss.name == name
-        end.map do |boss|
-            boss.plans
-        end
-    end
+    # def self.includes_boss(name)
+    #     #returns the bosses' plans
+    #     self.all.select do |boss|
+    #         boss.name == name
+    #     end.map do |boss|
+    #         boss.plans
+    #     end
+    # end
 
     def find_boss(boss)
         if self.name == name
@@ -44,19 +44,14 @@ class Boss < ActiveRecord::Base
         self.plans.first
     end
 
-    def plan_count
-        self.plans.count
-    end
+    # def plan_count
+    #     self.plans.count
+    # end
 
     #create a method that will take in a string and return that obect
 
     def self.boss_object(name)
         self.find_by(name: name)
     end
-
-
-
-    
-    
 
 end
