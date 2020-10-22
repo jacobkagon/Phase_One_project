@@ -1,4 +1,8 @@
 require_relative "../../config/environment.rb"
+Prompt = TTY::Prompt.new
+
+class Cli
+
 
 #we want to welcome the user to the evil plan generator
 #we want to give them options to search for a villain
@@ -6,6 +10,10 @@ require_relative "../../config/environment.rb"
 #once they've selected a villain, they have the option to view that villain's plans
 #They can then see the henchmen associated with those plans
 #they can have the option to create a new henchmen?
+
+def initialize
+    @user_input = nil
+end
 
 def begin_generator
     puts "Welcome to the Evil Plan Generator".red
@@ -31,61 +39,41 @@ end
 
 
 def choose_villain
-    puts "Please enter the name of your villain:".blue
-    puts "Or press 'b' to go back.".yellow
-    Boss.list_boss_names
-    $user_input = gets.chomp
-    puts "Welcome #{$user_input}"
-    puts ""
-    choose_plans
+    list_boss_names = Boss.list_boss_names
+    @user_input = Prompt.select("Please select your villain:", list_boss_names)
+    puts "Welcome #{@user_input}"
+    if @user_input 
+        choose_plans
+    end
 end
 
 def choose_plans
     #shows the corresponding plans for that boss
-    boss_plans = Boss.boss_object($user_input)
-    puts "Thank you. Now choose your next evil scheme:"
+    boss_plans = Boss.boss_object(@user_input)
+    #puts "Thank you. Now choose your next evil scheme:"
     puts ""
-    puts boss_plans.plans.pluck(:job)
-
-    
-    
-    Plan.boss_plans(boss_plans)
-end
-
-def boss_name
-    puts "enter name"
-    Boss.list_boss_names
-    $name = gets.chomp
-    if Boss.includes_boss(name)
-        list_boss_plans
+    plans = boss_plans.plans.pluck(:job)
+    @user_input = Prompt.select("Thank you. Now choose your next evil scheme", plans)
+    if @user_input
+      henchmen
     end
 end
 
-def list_boss_plans
-   boss = $name
-#    boss = Boss.boss_object(boss)
-#     Plan.boss_plans(boss)
-#     binding.pry
+def henchmen
+    puts "hi"
 end
 
 
-def choose_plan
-    #allows the user to choose from a list of plans
-    puts "Please choose an evil scheme to execute:"
-    puts ""
-    Plan.list_all_plans
 
-end
-
-def get_choose_plan
-    #brings up the list of plans
-    choose_plan
-    input = gets.chomp
-    if Plan.find_by(boss: dr_evil)
-        new_job = Plan.find_by(boss: dr_evil)
-    end
-    puts "You have chosen option #{chosen_plan}"
-end
+# def get_choose_plan
+#     #brings up the list of plans
+#     choose_plan
+#     input = gets.chomp
+#     if Plan.find_by(boss: dr_evil)
+#         new_job = Plan.find_by(boss: dr_evil)
+#     end
+#     puts "You have chosen option #{chosen_plan}"
+# end
 
 def choose_henchman
     puts "Would you like to choose a henchman?"
@@ -98,18 +86,16 @@ def choose_henchman
     end
 end
 
-def henchmen 
-    Henchman.list_all_henchmen
+# def run
+#     get_user_data
+# end
+
+
 end
 
 
 
 ################################################
 
-def run
-get_user_data
 
-end
-
-run
 
