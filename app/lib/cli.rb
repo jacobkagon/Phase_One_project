@@ -42,10 +42,11 @@ end
 
 def choose_plans
     #shows the corresponding plans for that boss
+    end
     boss_plans = Boss.boss_object($user_input)
     puts "Thank you. Now choose your next evil scheme:"
     puts ""
-    puts " * #{Plan.boss_plans(boss_plans)}"
+    puts "1. #{Plan.boss_plans(boss_plans)}"
 end
 
 def boss_name
