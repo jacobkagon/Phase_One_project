@@ -13,20 +13,10 @@ class Plan  < ActiveRecord::Base
     end
 
     def self.boss_plans(boss)
+        #lists bosses' plans
       self.find_by(boss_id: boss).job
     end
 
-    
-
-    def self.darth_vader_plans
-        if Plan.boss == darth_vader
-            darth_vader.plans.job
-        end
-    end
-
-    
-    
-    
     def self.list_all_plans
        puts "1. #{Plan.first.job}"
        puts "2. #{Plan.second.job}"

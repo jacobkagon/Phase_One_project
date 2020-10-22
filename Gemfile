@@ -10,4 +10,5 @@ gem 'pry'
 gem 'rake'
 gem 'database_cleaner'
 gem 'colorize'
+gem "tty-prompt"
 

@@ -9,6 +9,12 @@ class Boss < ActiveRecord::Base
        puts " "
        puts "2. #{Boss.second.name}"
        puts "#{Boss.second.title}"
+       puts ""
+       puts "3. #{Boss.third.name}"
+       puts "#{Boss.third.title}"
+       puts ""
+       puts "4. #{Boss.fourth.name}"
+       puts "#{Boss.fourth.title}"
     end
 
     def self.includes_boss(name)
