@@ -94,7 +94,7 @@ def create_look_menu
        if user_data == "create"
             boss = Boss.find_by(name: @user_input)
             boss.id
-            puts "Type a brief description of their scheme\n\n"
+            puts "Type a brief description of your scheme\n\n"
             @user_plan = gets.chomp
             puts "#{boss.name.yellow}'s new scheme, '#{@user_plan.red}' looks good!\n\n"
             new_plan = Plan.find_or_create_by(boss_id: boss.id, job: @user_plan)
