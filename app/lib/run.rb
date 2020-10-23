@@ -1,10 +1,8 @@
-def run
-   begin_generator
-   get_user_data
-   
+require_relative "./cli.rb"
 
-end
+run = Cli.new
 
+run.get_user_data
 
 
 
