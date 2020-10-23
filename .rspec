@@ -4,5 +4,5 @@
 
 
 
-puts "can see all the bosses"
-puts Boss.all.name
+puts "can see all the bosses?"
+puts Boss.all.include?(dr_evil)
