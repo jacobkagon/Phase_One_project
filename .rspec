@@ -1,3 +1,8 @@
 --color
 --require spec_helper
 --format documentation
+
+
+
+puts "can see all the bosses"
+puts Boss.all.name

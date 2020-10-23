@@ -4,9 +4,9 @@ PlanHenchman.delete_all
 Plan.delete_all
 
 dr_evil = Boss.create(name: "Dr. Evil", title: "Universal Evil Doer")
-darth_vader = Boss.create(name: "Darth Vader", title: "Destroyer of the Universe")
+darth_vader = Boss.create(name: "Darth Vader", title: "Jedi Hunter")
 ursula = Boss.create(name: "Ursula", title: "Sinker of Sailor Ships")
-gru = Boss.create(name: "Gru", title: "Vanquisher of All Using Yellow Minions")
+gru = Boss.create(name: "Gru", title: "King of the Minions")
 
 puts ""
 puts "Henchmen"
@@ -15,12 +15,12 @@ minime = Henchman.find_or_create_by(name: "Mini Me", specialty: "Ninja Karate Ch
 number2 = Henchman.find_or_create_by(name: "Number 2", specialty: "Sticking to the Plan")
 number3 = Henchman.find_or_create_by(name: "Number 3", specialty: "Being Superior to Number 2")
 frau_farissina = Henchman.find_or_create_by(name: "Frau Farissina", specialty: "Attack & Defense")
-cerberus = Henchman.find_or_create_by(name:"Cerberus", specialty:"Three-Headed echo bark")
+cerberus = Henchman.find_or_create_by(name:"Cerberus", specialty:"Three-headed dog")
 mc_mobster = Henchman.find_or_create_by(name: "Mc Mobster", specialty: "Makes all join his Mob")
 hamburglar = Henchman.find_or_create_by(name: "Hamburglar", specialty: "Burger Stealing")
-bob_the_goon = Henchman.find_or_create_by(name: "Bob the Goon", specialty: "Expert sidekick of annihilation")
+bob_the_goon = Henchman.find_or_create_by(name: "Bob the Goon", specialty: "Expert sidekick of the Joker")
 medusa = Henchman.find_or_create_by(name:"Medusa", specialty: "Turns all into stone")
-cerberus = Henchman.find_or_create_by(name:"Cerberus", specialty:"Three-Headed echo bark")
+#cerberus = Henchman.find_or_create_by(name:"Cerberus", specialty:"Three-Headed echo bark")
 
 puts ""
 puts "Plan"
