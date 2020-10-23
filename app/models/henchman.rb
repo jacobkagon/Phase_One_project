@@ -20,7 +20,7 @@ class Henchman < ActiveRecord::Base
 
     def self.henchmen_plans(plan)
         #find henchman attached to specific evil plan
-        self.findby(plan_id: plan).henchman_id
+        self.find_by(plan_id: plan).henchman_id
     end
 
     
@@ -30,6 +30,8 @@ class Henchman < ActiveRecord::Base
        puts "2. #{henchmen.second.name}, {henchmen.second.specialty}"
        puts "3. #{henchmen.third.name}, {henchmen.third.specialty}"
     end
+
+   henchman_name = Henchman.find_by(name: "Oddjob")
 
 
 

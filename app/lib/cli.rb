@@ -111,7 +111,7 @@ def choose_henchman
     if @user_input == 'yes'
         #Henchman.list_henchmen_names >> if type yes causes an infinite 'y'
     elsif @user_input == 'no'
-        hench_plans = henchman_plans.plans.pluck(:henchman_id)
+        hench_plans = Henchman.henchman_plans.plans.pluck(:henchman_id)
         #henchman who comes with job
     end
 end
