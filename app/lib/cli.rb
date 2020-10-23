@@ -98,6 +98,7 @@ def create_look_menu
             @user_plan = gets.chomp
             puts "#{boss.name.yellow}'s new scheme, '#{@user_plan.red}' looks good!\n\n"
             new_plan = Plan.find_or_create_by(boss_id: boss.id, job: @user_plan)
+            new_plan.save
             view_plan_details
         elsif user_data == "look"
     #pull boss name "string" from user input to then search for their plans in db
@@ -138,6 +139,7 @@ def view_plan_details
             system "clear"
             henchman = Henchman.find_by(name: @user_henchman)
             henchman.specialty
+            henchman.save
             puts "\n\nYou have chosen #{@user_henchman}, Specialty:'#{henchman.specialty}'\n".red
             puts "\nGood luck #{@user_input}. We hope all your evil schemes succeed!\n".yellow
             puts "press q to quit\n".red
